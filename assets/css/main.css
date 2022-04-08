@@ -1,0 +1,56 @@
+/**********
+* CUSTOM PROPERTIES
+**********/
+:root {
+  --theme-800: #161b21;
+  --theme-700: #212933;
+  --theme-600: #323e4c;
+  --theme-500: #455364;
+  --theme-400: #536780;
+  --theme-300: #9ea7b3;
+  --theme-200: #dde4ec;
+  --theme-100: #ffffff;
+  --theme-orange: #ff5850;
+  --theme-blue: #00a7af;
+
+  --bounce: cubic-bezier(.65,-0.17,0,1.73);
+  --base: all 0.3s ease-in-out;
+}
+
+/**********
+* TYPOGRAPHY
+**********/
+html {
+  font-size: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'GT Haptik';
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+p,
+li,
+a,
+label {
+  font-size: 1.6rem;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+}
+
+/**********
+* FORM ELEMENTS
+**********/
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  cursor: pointer;
+}
+
