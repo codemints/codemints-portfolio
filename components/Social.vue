@@ -1,6 +1,6 @@
 <template>
   <div class="[ fa-brands__wrapper ]">
-    <a href="https://www.linkedin/codemints" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.linkedin.com/in/codemints/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
     <a href="https://www.codepen.io/codemints" target="_blank"><i class="fa-brands fa-codepen"></i></a>
     <a href="https://www.github.com/codemints" target="_blank"><i class="fa-brands fa-github-alt"></i></a>
   </div>
@@ -16,6 +16,7 @@ export default {
   .fa-brands__wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
   }
   i.fa-brands {

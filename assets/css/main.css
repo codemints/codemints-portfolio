@@ -15,6 +15,7 @@
 
   --bounce: all 0.3s cubic-bezier(.65,-0.17,0,1.73);
   --base: all 0.3s ease-in-out;
+
 }
 
 /**********
@@ -22,14 +23,7 @@
 **********/
 html {
   font-size: 10px;
-}
-
-body {
-  background-color: white;
-}
-
-.dark body {
-  background-color: var(--theme-800);
+  overflow-x: hidden;
 }
 
 /**********
@@ -44,6 +38,7 @@ h6 {
   font-family: 'GT Haptik';
   font-weight: 800;
   text-transform: uppercase;
+  line-height: 1;
 }
 
 p,
@@ -65,3 +60,58 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+/**********
+* THEME CSS
+**********/
+#root {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+    url('img/lightbg-section-01.png');
+  background-color: white;
+  min-height: 100vh;
+}
+
+#root.dark {
+  background-image:
+  linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('img/darkbg-section-01.png');
+  background-color: var(--theme-800);
+}
+
+/**********
+* UTILITIES
+**********/
+.block__hover {
+  position: relative;
+  z-index: 1;
+}
+.block__hover:after {
+  content: '';
+  position: absolute;
+  bottom: 0.3rem;
+  left: 0;
+  height: 1.2rem;
+  width: 100%;
+  background-color: var(--theme-200);
+  z-index: -1;
+  transition: var(--bounce);
+}
+.block__hover:hover:after {
+  height: calc( 100% - 0.3rem );
+}
+.dark .block__hover:after {
+  background-color: var(--theme-500);
+}
+/**********
+* BUTTONS
+**********/
+.button {
+  display: block;
+  color: white;
+  font-size: 1.8rem;
+  width: max-content;
+  background-color: var(--theme-orange);
+  padding-block: 1.5rem;
+  padding-inline: 3rem;
+  transition: var(--base);
+}

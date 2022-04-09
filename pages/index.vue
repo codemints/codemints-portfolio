@@ -1,38 +1,72 @@
 <template>
-  <div id="root">
-    <Header :isDark="isDark" />
+  <div id="root" :class="modeClassName">
+    <Header :isDark="isDark" :updateMode="updateMode" />
+    <IntroSection />
   </div>
 </template>
 
 <script>
-import Header from '../components/Header'
+import Header from 'comp/Header'
+import IntroSection from 'comp/sections/Intro'
+
 export default {
-  //how do I add a class when I hover?
-  //how do I append child?
-  //how do I link in-page?
-  //how do I pass props to nested children?
   name: 'app',
+
+  components: {
+    IntroSection
+  },
 
   data() {
     return {
-      root: null,
       isDark: null,
+      isMode: null,
     }
   },
 
   watch: {
-    
+  },
+
+  computed: {
+    //set top level class to 'light' or 'dark' to trigger theme color styles
+    modeClassName() {
+      return this.isDark ? 'dark' : 'light'
+    },
   },
 
   methods: {
+    //update isDark & isMode data in parent
+    //passed down to header & toggle components
+    updateMode(mode) {
+      this.isDark = mode
+      this.isMode = this.isDark ? 'dark' : 'light'
+      localStorage.setItem('themeMode', this.isMode)
+    },
+    
+    //returns user system color preference, i.e. light or dark
+    prefersMode(mode) {
+      return window.matchMedia(`(prefers-color-scheme: ${mode})`)
+    },
 
+    //sets initial state based on user system color preference
+    //sets persistent data based on user choice
+    //if user choice exists in localStorage will set based on that
+    setPrefersMode() {
+      const local = localStorage.getItem('themeMode')
+      if ( this.prefersMode('dark').matches && !local ) {
+        this.updateMode(true)
+      } else if ( !this.prefersMode('dark') && !local ) {
+        this.updateMode(false)
+      } else {
+        const mode = ( local === 'dark' ) ? true : false
+        this.updateMode(mode);
+      }
+    }
   },
 
   mounted() {
-    this.root = document.documentElement
-    if ( this.root.classList.contains('dark') ) this.isDark === true
-    else this.isDark === false
-  }
+    //set inital state color mode
+    this.setPrefersMode()
+  },
 }
 </script>
 

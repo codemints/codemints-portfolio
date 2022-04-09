@@ -15,18 +15,9 @@ export default {
 
   data() {
     return {
-      root: null,
-      classNames: [ 'text-theme-300', 'hover:text-theme-200', 'active:text-theme-200', 'focus:text-theme-200', 'active:text-theme-200', 'dark:text-theme-100', 'dark:hover:text-theme-blue', 'dark:focus:text-theme-blue', 'dark:active:text-theme-blue' ]
+      classNames: [ 'text-theme-300', 'hover:text-theme-200', 'active:text-theme-200', 'focus:text-theme-200', 'dark:text-theme-100', 'dark:hover:text-theme-blue', 'dark:focus:text-theme-blue', 'dark:active:text-theme-blue' ]
     }
   },
-
-  methods: {
-
-  },
-
-  mounted() {
-    
-  }
 }
 </script>
 

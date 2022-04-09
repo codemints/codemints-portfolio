@@ -11,8 +11,8 @@
         <input
           type="radio"
           id="toggle__dark"
-          value="dark"
-          v-model="theme"
+          :value="true"
+          v-model="dark"
           class="[ theme__toggle--button ]"
           >
       </div>
@@ -23,8 +23,8 @@
         <input
           type="radio"
           id="toggle__light" 
-          value="light"
-          v-model="theme"
+          :value="false"
+          v-model="dark"
           class="[ theme__toggle--button ]"
           >
       </div>
@@ -42,42 +42,47 @@
 <script>
 export default {
   name: 'Toggle',
+
+  props: [
+    'isDark',
+    'updateMode',
+  ],
   
   data() {
     return {
-      root: null,
-      theme: null,
+      dark: this.isDark,
+      watchDark: false,
     }
   },
   
   computed: {
+    //sets the postiion of the toggle based on initial isDark value
     togglePosition() {
       return {
-        'position__dark': this.theme === 'dark',
-        'position__light': this.theme === 'light'
+        'position__dark': this.dark,
+        'position__light': !this.dark
       }
     }
   },
 
   watch: {
-    theme() {
-      if ( this.theme === 'dark' )this.root.classList.add('dark')
-      else this.root.classList.remove('dark')
-    }
+    //updates root isDark data value based on user input from radio buttons
+    dark() {
+      this.updateMode(this.dark)
+    },
   },
-  
-  methods: {
-    
-  },
-  
-  mounted() {
-    this.root = document.documentElement
-    root.classList.contains('dark') ? this.theme = 'dark' : this.theme = 'light'
-  },
-  
+
   created() {
-    
-  },
+    //watches for initial change in isDark prop from root component
+    //if change updates this data clone to match
+    //self closes after update
+    this.unwatchDark = this.$watch('isDark', (newValue) => {
+      if ( newValue ) {
+        this.dark = newValue
+        this.unwatchDark();
+      }
+    })
+  }
 }
 </script>
 
@@ -89,7 +94,7 @@ export default {
     
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 1.5rem;
   }
   .toggle__bg {
