@@ -23,6 +23,9 @@ export default {
     color: var(--theme-300);
     transition: var(--base);
   }
+  .dark i.fa-brands {
+    color: var(--theme-500);
+  }
   
   i.fa-brands:hover {
     color: var(--theme-blue);

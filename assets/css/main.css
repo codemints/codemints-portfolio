@@ -13,17 +13,28 @@
   --theme-orange: #ff5850;
   --theme-blue: #00a7af;
 
-  --bounce: cubic-bezier(.65,-0.17,0,1.73);
+  --bounce: all 0.3s cubic-bezier(.65,-0.17,0,1.73);
   --base: all 0.3s ease-in-out;
 }
 
 /**********
-* TYPOGRAPHY
+* BASE STYLES
 **********/
 html {
   font-size: 10px;
 }
 
+body {
+  background-color: white;
+}
+
+.dark body {
+  background-color: var(--theme-800);
+}
+
+/**********
+* TYPOGRAPHY
+**********/
 h1,
 h2,
 h3,

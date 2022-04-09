@@ -19,7 +19,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/fav.png' },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"}
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"},
     ]
   },
 
@@ -36,7 +36,8 @@ export default {
 
   alias: {
     'img': resolve(__dirname, './assets/img'),
-    'css': resolve(__dirname, './assets/css')
+    'css': resolve(__dirname, './assets/css'),
+    'comp': resolve(__dirname, './components'),
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
